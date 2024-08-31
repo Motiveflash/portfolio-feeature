@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe's Programming Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #0a192f;
+            color: #8892b0;
+            overflow-x: hidden;
+        }
+
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            padding: 2rem;
+        }
+
+        .section.active {
+            opacity: 1;
+        }
+
+        .content {
+            max-width: 1000px;
+            padding: 2rem;
+            background-color: rgba(10, 25, 47, 0.7);
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        h1, h2 {
+            color: #64ffda;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1rem;
+            background-color: #64ffda;
+            color: #0a192f;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background-color: #64ffda;
+            z-index: 100;
+        }
+
+        .project {
+            display: flex;
+            margin-bottom: 2rem;
+            background-color: rgba(16, 36, 69, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .project-image {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            flex: 2;
+            padding: 1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            background-color: #172a45;
+            color: #64ffda;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="progress-bar"></div>
+
+    <div class="section" id="home">
+        <div class="content">
+            <h1>John Doe</h1>
+            <p>Full Stack Developer & AI Enthusiast</p>
+            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="John Doe" class="profile-pic">
+            <p>Welcome to my digital playground. Scroll down to explore my work and experience in the world of programming.</p>
+        </div>
+    </div>
+
+    <div class="section" id="about">
+        <div class="content">
+            <h2>About Me</h2>
+            <p>I'm a passionate full stack developer with 5+ years of experience in crafting robust and scalable web applications. My expertise lies in:</p>
+            <div class="skills-list">
+                <span class="skill">JavaScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Python</span>
+                <span class="skill">Machine Learning</span>
+                <span class="skill">AWS</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="projects">
+        <div class="content">
+            <h2>My Projects</h2>
+            <div class="project">
+                <div class="project-image">
+                    <img src="https://images.pexels.com/photos/5483077/pexels-photo-5483077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="AI Chatbot">
+                </div>
+                <div class="project-info">
+                    <h3>AI-Powered Chatbot</h3>
+                    <p>Developed a sophisticated chatbot using natural language processing and machine learning algorithms. The bot can understand context and provide human-like responses.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-image">
+                    <img src="https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="E-commerce Platform">
+                </div>
+                <div class="project-info">
+                    <h3>E-commerce Platform</h3>
+                    <p>Built a full-featured e-commerce platform using React for the frontend and Node.js for the backend. Implemented features like real-time inventory management and secure payment processing.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="contact">
+        <div class="content">
+            <h2>Get in Touch</h2>
+            <p>Interested in collaborating or have a project in mind? Let's connect!</p>
+            <p>Email: john.doe@example.com</p>
+            <p>LinkedIn: linkedin.com/in/johndoe</p>
+            <p>GitHub: github.com/johndoe</p>
+            <a href="#" class="btn">Send Message</a>
+        </div>
+    </div>
+
+    <script>
+        // Three.js setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas') });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Create and add 3D objects
+        const geometry = new THREE.IcosahedronGeometry(10, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x64ffda, wireframe: true });
+        const icosahedron = new THREE.Mesh(geometry, material);
+        scene.add(icosahedron);
+
+        camera.position.z = 30;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            icosahedron.rotation.x += 0.001;
+            icosahedron.rotation.y += 0.002;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Scroll effect
+        const sections = document.querySelectorAll('.section');
+        const progressBar = document.getElementById('progress-bar');
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (scrollPosition / maxScroll) * 100;
+
+            progressBar.style.width = `${scrollPercentage}%`;
+
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollPosition >= sectionTop - window.innerHeight / 2 &&
+                    scrollPosition < sectionTop + sectionHeight - window.innerHeight / 2) {
+                    section.classList.add('active');
+                    icosahedron.rotation.x = index * Math.PI / 4;
+                    icosahedron.rotation.y = index * Math.PI / 4;
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
